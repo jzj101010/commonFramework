@@ -1,0 +1,79 @@
+ext {
+
+
+    baseVersion = [
+            androidSupportSdkVersion: "28.0.0",
+            retrofitSdkVersion      : "2.5.0",
+            glideSdkVersion         : "4.9.0",
+    ]
+
+
+    baseDependencies = [
+            //android test
+            "junit"                   : "junit:junit:4.12",
+            "test-runner"             : "androidx.test.ext:junit:1.1.1",
+            "espresso"                : "androidx.test.espresso:espresso-core:3.2.0",
+
+            //kotlin
+            "kotlin-stdlib"           : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+            "core-ktx"                : 'androidx.core:core-ktx:1.0.2',
+
+
+            //android support
+            "appcompat"               : "androidx.appcompat:appcompat:1.1.0",
+            "constraintlayout"        : "androidx.constraintlayout:constraintlayout:1.1.3",
+            "design"                  : "com.android.support:design:${baseVersion["androidSupportSdkVersion"]}",
+
+            //network
+            "retrofit"                : "com.squareup.retrofit2:retrofit:${baseVersion["retrofitSdkVersion"]}",
+            "retrofit-converter-gson" : "com.squareup.retrofit2:converter-gson:${baseVersion["retrofitSdkVersion"]}",
+            "retrofit-adapter-rxjava2": "com.squareup.retrofit2:adapter-rxjava2:${baseVersion["retrofitSdkVersion"]}",
+            "okhttp"                  : "com.squareup.okhttp3:okhttp:3.8.1",
+            "logging-interceptor"     : "com.squareup.okhttp3:logging-interceptor:3.8.1",
+            "gson"                    : "com.google.code.gson:gson:2.8.5",
+
+            //rx
+            "rxjava2"                 : "io.reactivex.rxjava2:rxjava:2.2.6",
+            "rxandroid2"              : "io.reactivex.rxjava2:rxandroid:2.1.0",
+            "rxkotlin2"               : "io.reactivex.rxjava2:rxkotlin:2.3.0",
+
+            "rxlifecycle"             : 'com.trello.rxlifecycle3:rxlifecycle:3.1.0',
+            "rxlifecycle-android"     : 'com.trello.rxlifecycle3:rxlifecycle-android:3.1.0',
+            "rxlifecycle-components"  : 'com.trello.rxlifecycle3:rxlifecycle-components:3.1.0',
+
+            //router
+            "arouter-api"             : "com.alibaba:arouter-api:1.4.1",
+            "arouter-compiler"        : "com.alibaba:arouter-compiler:1.2.2",
+
+            //image
+            "glide"                   : "com.github.bumptech.glide:glide:${baseVersion["glideSdkVersion"]}",
+            "glide-compiler"          : "com.github.bumptech.glide:compiler:${baseVersion["glideSdkVersion"]}",
+            "glide-transformations"   : "jp.wasabeef:glide-transformations:4.0.1",
+
+            //tools
+            "eventbus"                : "org.greenrobot:eventbus:3.1.1",
+            "tedpermission"           : "gun0912.ted:tedpermission-rx2:2.2.2",
+            "utilcode"                : "com.blankj:utilcode:1.12.5",
+            "imgsel"                  : "com.yuyh.imgsel:library:2.0.6",
+
+            //view
+            "vlayout"                 : "com.alibaba.android:vlayout:1.2.8@aar",
+            "ultraviewpager"          : "com.alibaba.android:ultraviewpager:1.0.7.7@aar",
+            "flexbox"                 : "com.google.android:flexbox:1.1.0",
+            "aterial-dialogs"         : "com.afollestad.material-dialogs:core:2.0.0",
+            "convenientbanner"        : "com.bigkoo:ConvenientBanner:2.1.4",
+            "qmui"                    : "com.qmuiteam:qmui:1.1.11",
+
+
+            //待定
+//            "circleimageview"         : "de.hdodenhof:circleimageview:2.2.0",
+//            "pinyin"                  : "com.github.promeg:tinypinyin:2.0.3",
+//            "greendao"                : "org.greenrobot:greendao:3.2.2",
+//            "picker-view"             : "com.contrarywind:Android-PickerView:4.1.8",
+//            "wechatsdk"               : "com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+",
+
+
+    ]
+
+
+}

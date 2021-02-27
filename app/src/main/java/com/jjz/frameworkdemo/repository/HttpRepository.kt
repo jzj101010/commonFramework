@@ -1,0 +1,24 @@
+package com.jjz.frameworkdemo.repository
+
+import com.jjz.common.http.BaseRepository
+import com.jjz.common.http.RetrofitParam
+import com.jjz.common.http.result.HttpResult
+import io.reactivex.Observable
+
+object HttpRepository : BaseRepository() {
+
+    override fun getMethodUrl(url: String): String {
+        TODO("Not yet implemented")
+    }
+
+
+    fun getHttpData(param: String,page :Int,size :Int): Observable<HttpResult> {
+        var param = RetrofitParam().newBuilder()
+            .addPage(page)
+            .addSize(size)
+            .addParam("param", param).build()
+
+        return apiService.getData(getMethodUrl("customer/apply-record/doAudit"),param)
+    }
+
+}
