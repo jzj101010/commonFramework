@@ -1,4 +1,4 @@
-package com.jjz.frameworkdemo.ui.viewbinding
+package com.jjz.frameworkdemo.ui.viewbinding.kotlin
 
 import android.os.Bundle
 import com.jjz.frameworkdemo.ui.BaseActivity
@@ -25,6 +25,7 @@ class ViewBindingKtActivity : BaseActivity() {
                 "\n" +
                 "        binding.tvCenter.text=\"ViewBindingKtActivity\"\n" +
                 "    }\n" +
-                "}"
+                "}\n\n" +
+                "###################################################################################\n"
     }
 }

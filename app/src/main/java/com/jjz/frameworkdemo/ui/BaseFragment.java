@@ -4,7 +4,9 @@ import androidx.annotation.LayoutRes;
 import androidx.fragment.app.Fragment;
 
 public class BaseFragment extends Fragment {
-
+    public BaseFragment(){
+        super();
+    }
     public BaseFragment(@LayoutRes int contentLayoutId){
         super(contentLayoutId);
     }

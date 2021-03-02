@@ -6,8 +6,8 @@ import android.widget.Button
 import com.jjz.frameworkdemo.databinding.ActivityMainBinding
 import com.jjz.frameworkdemo.ui.BaseActivity
 import com.jjz.frameworkdemo.ui.HttpRequestActivity
-import com.jjz.frameworkdemo.ui.viewbinding.ViewBindingJavaActivity
-import com.jjz.frameworkdemo.ui.viewbinding.ViewBindingKtActivity
+import com.jjz.frameworkdemo.ui.viewbinding.java.ViewBindingJavaActivity
+import com.jjz.frameworkdemo.ui.viewbinding.kotlin.ViewBindingKtActivity
 
 class MainActivity : BaseActivity() {
 

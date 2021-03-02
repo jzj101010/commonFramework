@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.viewbinding.ViewBindingKtActivity">
+    tools:context=".ui.viewbinding.kotlin.ViewBindingKtActivity">
     <TextView
         android:id="@+id/tv_center"
         app:layout_constraintTop_toTopOf="parent"
@@ -15,7 +15,7 @@
         android:id="@+id/fragment"
         android:tag="ViewBindingKtFragment"
         app:layout_constraintTop_toBottomOf="@+id/tv_center"
-        android:name="com.jjz.frameworkdemo.ui.viewbinding.ViewBindingKtFragment"
+        android:name="com.jjz.frameworkdemo.ui.viewbinding.kotlin.ViewBindingKtFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints" />

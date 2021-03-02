@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.viewbinding.kotlin.ViewBindingKtFragment">
+    tools:context=".ui.viewbinding.java.ViewBindingJavaFragment">
 
     <TextView
         android:id="@+id/tv_center"

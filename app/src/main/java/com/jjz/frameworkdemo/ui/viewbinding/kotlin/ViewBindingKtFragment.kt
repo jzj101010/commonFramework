@@ -1,4 +1,4 @@
-package com.jjz.frameworkdemo.ui.viewbinding
+package com.jjz.frameworkdemo.ui.viewbinding.kotlin
 
 import android.os.Bundle
 import android.view.View
@@ -12,24 +12,17 @@ class ViewBindingKtFragment : BaseFragment(R.layout.fragment_view_binding_kt) {
 
     private val binding: FragmentViewBindingKtBinding by bindView()
 
-//    override fun onCreateView(
-//        inflater: LayoutInflater,
-//        container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//        return binding.root
-//    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.tvCenter.text = "class ViewBindingKtFragment : BaseFragment() {\n" +
-                "\n" +
+        binding.tvCenter.text = "class ViewBindingKtFragment : BaseFragment(R.layout.fragment_view_binding_kt) {\n" +
                 "\n" +
                 "    private val binding: FragmentViewBindingKtBinding by bindView()\n" +
+                "    \n" +
                 "\n" +
                 "    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {\n" +
                 "        super.onViewCreated(view, savedInstanceState)\n" +
-                "        binding.tvHelloWorld.text = \"Hello Android!\"\n" +
+                "        binding.tvCenter.text = \"\"\n" +
                 "    }\n" +
                 "}"
     }

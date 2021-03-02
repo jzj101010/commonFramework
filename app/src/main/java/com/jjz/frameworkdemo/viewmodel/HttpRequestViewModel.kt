@@ -18,30 +18,21 @@ class HttpRequestViewModel : BaseViewModel() {
 
 
     fun getData(){
-        HttpRepository.getHttpData("",1,0)
-            .map(HttpResultUtils.HandleResult<EmptyBean>())
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : Observer<EmptyBean> {
-                override fun onComplete() {
+        var mObserver = HttpRepository.getHttpData("", 1, 0)
+       request<EmptyBean>(mObserver){
+           //结果
 
-                }
 
-                override fun onSubscribe(d: Disposable) {
-
-                }
-
-                override fun onNext(t: EmptyBean) {
-
-                }
-
-                override fun onError(e: Throwable) {
-
-                }
-            })
+       }
     }
 
+    fun getListData(){
+        requestList<EmptyBean>(HttpRepository.getHttpData("", 1, 0)){
+            //列表结果
 
+
+        }
+    }
 
 
 

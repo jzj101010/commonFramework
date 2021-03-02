@@ -4,9 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.viewbinding.ViewBindingJavaActivity">
+    tools:context=".ui.viewbinding.java.ViewBindingJavaActivity">
     <TextView
         android:id="@+id/tv_center"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"/>
+
+
+    <fragment
+        android:id="@+id/fragment"
+        android:tag="ViewBindingKtFragment"
+        app:layout_constraintTop_toBottomOf="@+id/tv_center"
+        android:name="com.jjz.frameworkdemo.ui.viewbinding.java.ViewBindingJavaFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

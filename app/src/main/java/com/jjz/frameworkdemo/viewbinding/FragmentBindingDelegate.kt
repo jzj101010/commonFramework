@@ -1,4 +1,4 @@
-package com.jjz.frameworkdemo.ui.viewbinding
+package com.jjz.frameworkdemo.viewbinding
 
 import android.view.View
 import androidx.fragment.app.Fragment

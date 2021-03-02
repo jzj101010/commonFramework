@@ -3,15 +3,9 @@ package com.jjz.frameworkdemo
 import android.app.Activity
 import android.app.Dialog
 import android.view.LayoutInflater
-import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.OnLifecycleEvent
 import androidx.viewbinding.ViewBinding
-import com.jjz.frameworkdemo.ui.viewbinding.FragmentBindingDelegate
-import kotlin.properties.ReadOnlyProperty
-import kotlin.reflect.KProperty
+import com.jjz.frameworkdemo.viewbinding.FragmentBindingDelegate
 
 
 inline fun <reified VB : ViewBinding> Activity.inflate() = lazy {
@@ -27,6 +21,7 @@ inline fun <reified VB : ViewBinding> inflateBinding(layoutInflater: LayoutInfla
     VB::class.java.getMethod("inflate", LayoutInflater::class.java).invoke(null, layoutInflater) as VB
 
 
-inline fun <reified VB : ViewBinding> Fragment.bindView() = FragmentBindingDelegate(VB::class.java)
+inline fun <reified VB : ViewBinding> Fragment.bindView() =
+    FragmentBindingDelegate(VB::class.java)
 
 

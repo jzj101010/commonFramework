@@ -8,7 +8,7 @@ import io.reactivex.Observable
 object HttpRepository : BaseRepository() {
 
     override fun getMethodUrl(url: String): String {
-        TODO("Not yet implemented")
+        return url
     }
 
 
