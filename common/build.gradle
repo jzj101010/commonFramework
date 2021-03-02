@@ -44,7 +44,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    implementation 'com.tencent:mmkv-static:1.2.7'
+
     //network
     api baseDependencies["retrofit"]
     api baseDependencies["retrofit-converter-gson"]
@@ -57,8 +57,8 @@ dependencies {
     api baseDependencies["rxandroid2"]
     api baseDependencies["rxkotlin2"]
     
-    implementation 'com.blankj:utilcodex:1.30.6'
-
+    api 'com.blankj:utilcodex:1.30.6'
+    implementation 'com.tencent:mmkv-static:1.2.7'
     implementation 'com.jeremyliao:live-event-bus-x:1.7.3'
 
 }

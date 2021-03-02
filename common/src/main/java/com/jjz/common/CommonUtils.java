@@ -4,6 +4,7 @@ import android.app.Application;
 
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.blankj.utilcode.util.Utils;
 import com.jeremyliao.liveeventbus.LiveEventBus;

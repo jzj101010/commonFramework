@@ -1,5 +1,6 @@
 package com.jjz.frameworkdemo.viewmodel
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.jjz.common.http.HttpResultUtils
 import com.jjz.common.http.result.EmptyBean
@@ -11,6 +12,8 @@ import io.reactivex.schedulers.Schedulers
 
 class HttpRequestViewModel : BaseViewModel() {
 
+
+    var testLiveValue=MutableLiveData<String>()
 
 
 
