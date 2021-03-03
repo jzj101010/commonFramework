@@ -2,6 +2,7 @@ package com.jjz.common.http
 
 import com.google.gson.Gson
 import com.google.gson.JsonObject
+import com.google.gson.reflect.TypeToken
 import com.jjz.common.http.result.AccessTokenBean
 import com.jjz.common.http.result.HttpResult
 import com.jjz.common.http.result.ListData
@@ -23,20 +24,32 @@ object HttpResultUtils {
     inline fun <reified T> HandleResult(): Function<HttpResult, T> {
         return Function {
             if (it.isSuccess) {
-                if (it.data == null || it.data!!.isJsonNull) {
-                    val clz = T::class.java
-                    val mCreate = clz.getDeclaredConstructor()
-                    mCreate. isAccessible = true
-                    mCreate. newInstance()
+               return@Function when{
+                    (it.data == null || it.data!!.isJsonNull)->{
+                        val clz = T::class.java
+                        val mCreate = clz.getDeclaredConstructor()
+                        mCreate. isAccessible = true
+                        mCreate. newInstance()
+                    }
+
+                   (it.data!!.isJsonPrimitive)->{
+                       Gson().fromJson(
+                           String.format("\"%s\"", it.data!!.asString),
+                           T::class.java
+                       )
+                   }
+                   (it.data!!.isJsonArray)->{
+//                       Gson().fromJson(
+//                           String.format("\"%s\"", it.data!!.asString),
+//                           T::class.java
+//                       )
+                       throw Exception("这是一个Array，请使用HandleResultList解析")
+                   }
+                   else ->{
+                       Gson().fromJson(it.data, T::class.java)
+                   }
                 }
-                if (it.data!!.isJsonPrimitive) {
-                    /*data：false | “string” | 66.4  */
-                     Gson().fromJson(
-                        String.format("\"%s\"", it.data!!.asString),
-                        T::class.java
-                    )
-                }
-                Gson().fromJson(it.data, T::class.java)
+
             }else {
                 throw Exception(it.message)
             }
@@ -47,7 +60,16 @@ object HttpResultUtils {
     inline fun <reified T> HandleResultList(): Function<HttpResult, ListData<T>> {
         return Function {
             if (it.isSuccess && !it.data!!.isJsonNull)  {
+
                 val listData = ListData<T>()
+                //数组
+                if(it.data!!.isJsonArray){
+                    val listType = object : TypeToken<List<T>>() { }.type
+                    var fromJson = Gson().fromJson<List<T>>(it.data, listType)
+                    listData.content=fromJson
+                    return@Function listData
+                }
+                //分页数据
                 val data = it.data as JsonObject
                 if(data.has("totalElements")){
                     listData.totalElements = data.get("totalElements").asInt
@@ -77,7 +99,7 @@ object HttpResultUtils {
                     listData.number = data.getAsJsonPrimitive("number").asInt
                 }
 
-                val jsonArray = data.getAsJsonArray("content")
+                val jsonArray = data.getAsJsonArray("datas")
                 if (listData.content == null) {
                     listData.content = arrayListOf()
                 }

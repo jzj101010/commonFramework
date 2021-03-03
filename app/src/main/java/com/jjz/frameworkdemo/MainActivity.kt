@@ -8,6 +8,7 @@ import com.jjz.frameworkdemo.ui.BaseActivity
 import com.jjz.frameworkdemo.ui.HttpRequestActivity
 import com.jjz.frameworkdemo.ui.viewbinding.java.ViewBindingJavaActivity
 import com.jjz.frameworkdemo.ui.viewbinding.kotlin.ViewBindingKtActivity
+import com.jjz.frameworkdemo.ui.viewmodel.VM2Activity
 
 class MainActivity : BaseActivity() {
 
@@ -26,6 +27,7 @@ class MainActivity : BaseActivity() {
                     "ViewBindingKtActivity" -> startActivity(ViewBindingKtActivity::class.java)
                     "ViewBindingJavaActivity" -> startActivity(ViewBindingJavaActivity::class.java)
                     "HttpRequestActivity" -> startActivity(HttpRequestActivity::class.java)
+                    "ViewModel2Activity" -> startActivity(VM2Activity::class.java)
 
                 }
             }

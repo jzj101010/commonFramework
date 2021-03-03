@@ -4,9 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.HttpRequestActivity">
-    <TextView
-        android:id="@+id/tv_center"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+    tools:context=".ui.viewmodel.ViewModelKtActivity">
+
 </androidx.constraintlayout.widget.ConstraintLayout>

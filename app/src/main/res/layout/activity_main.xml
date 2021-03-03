@@ -53,7 +53,7 @@
         android:layout_columnWeight="1"
         android:gravity="center"
         android:paddingVertical="5dp"
-        android:text="ViewBindingKtActivity"
+        android:text="ViewModel2Activity"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

@@ -1,4 +1,4 @@
-package com.jjz.frameworkdemo.repository
+package com.jjz.frameworkdemo.http.repository
 
 import com.jjz.common.http.BaseRepository
 import com.jjz.common.http.RetrofitParam
@@ -18,7 +18,7 @@ object HttpRepository : BaseRepository() {
             .addSize(size)
             .addParam("param", param).build()
 
-        return apiService.getData(getMethodUrl("customer/apply-record/doAudit"),param)
+        return apiService.getData(getMethodUrl("article/top/json"),param)
     }
 
 }

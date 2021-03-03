@@ -18,7 +18,7 @@ public class CommonUtils {
      * @param application
      */
     static public void init(Application application){
-        SpUtils.init(application);
+        MMKV.initialize(application);
         Utils.init(application);
     }
 }
