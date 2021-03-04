@@ -4,31 +4,32 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import com.jjz.frameworkdemo.databinding.ActivityMainBinding
-import com.jjz.frameworkdemo.ui.BaseActivity
-import com.jjz.frameworkdemo.ui.HttpRequestActivity
+import com.jjz.frameworkdemo.ui.DemoJavaActivity
+import com.jjz.frameworkdemo.ui.DemoKtActivity
 import com.jjz.frameworkdemo.ui.viewbinding.java.ViewBindingJavaActivity
 import com.jjz.frameworkdemo.ui.viewbinding.kotlin.ViewBindingKtActivity
-import com.jjz.frameworkdemo.ui.viewmodel.VM2Activity
+import com.jjz.frameworkdemo.ui.viewmodel.ViewModel2Activity
+import com.jjz.frameworkdemo.ui.viewmodel.ViewModelActivity
+import com.jjz.frameworkdemo.ui.viewmodel.ViewModelKtActivity
+import com.jjz.frameworkdemo.viewmodel.BaseVMActivity
+import com.jjz.frameworkdemo.viewmodel.HttpRequestViewModel
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseVMActivity<ActivityMainBinding, HttpRequestViewModel>() {
 
-    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
-
         for (i in 0 until binding.gridRoot.childCount) {
             var childAt = binding.gridRoot.getChildAt(i) as Button
             childAt.setOnClickListener {
                 when (childAt.text.toString()) {
                     "ViewBindingKtActivity" -> startActivity(ViewBindingKtActivity::class.java)
                     "ViewBindingJavaActivity" -> startActivity(ViewBindingJavaActivity::class.java)
-                    "HttpRequestActivity" -> startActivity(HttpRequestActivity::class.java)
-                    "ViewModel2Activity" -> startActivity(VM2Activity::class.java)
-
+                    "ViewModelActivity" -> startActivity(ViewModelActivity::class.java)
+                    "ViewModel2Activity" -> startActivity(ViewModel2Activity::class.java)
+                    "ViewModelKtActivity" -> startActivity(ViewModelKtActivity::class.java)
+                    "DemoJavaActivity" -> startActivity(DemoJavaActivity::class.java)
+                    "DemoKtActivity" -> startActivity(DemoKtActivity::class.java)
                 }
             }
 

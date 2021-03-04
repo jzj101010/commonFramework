@@ -1,4 +1,4 @@
-package com.jjz.frameworkdemo.ui;
+package com.jjz.frameworkdemo;
 
 import androidx.annotation.LayoutRes;
 import androidx.fragment.app.Fragment;

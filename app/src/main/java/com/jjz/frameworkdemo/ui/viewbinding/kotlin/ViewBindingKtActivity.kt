@@ -1,7 +1,7 @@
 package com.jjz.frameworkdemo.ui.viewbinding.kotlin
 
 import android.os.Bundle
-import com.jjz.frameworkdemo.ui.BaseActivity
+import com.jjz.frameworkdemo.BaseActivity
 import com.jjz.frameworkdemo.databinding.ActivityViewBindingKtBinding
 import com.jjz.frameworkdemo.inflate
 

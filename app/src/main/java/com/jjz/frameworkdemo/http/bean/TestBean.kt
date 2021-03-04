@@ -1,5 +1,8 @@
 package com.jjz.frameworkdemo.http.bean
 
+import android.os.Parcelable
+import java.io.Serializable
+
 data class TestBean(
     val apkLink: String,
     val audit: Int,
@@ -34,4 +37,4 @@ data class TestBean(
     val userId: Int,
     val visible: Int,
     val zan: Int
-)
+):Serializable

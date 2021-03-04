@@ -5,14 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.viewbinding.ViewBinding;
 
 import com.dylanc.viewbinding.base.ViewBindingUtil;
-import com.jjz.frameworkdemo.R;
-import com.jjz.frameworkdemo.ui.BaseFragment;
+import com.jjz.frameworkdemo.BaseFragment;
 
 
  abstract public class BaseBindingFragment<VB extends ViewBinding> extends BaseFragment {

@@ -1,6 +1,8 @@
 package com.jjz.common;
 
 import android.os.Parcelable
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.tencent.mmkv.MMKV
 import java.util.*
 
@@ -21,6 +23,7 @@ object SpUtils {
             is Double -> mmkv?.encode(key, value)
             is ByteArray -> mmkv?.encode(key, value)
             is Nothing -> return
+            else-> mmkv?.encode(key, Gson().toJson(value))
         }
     }
 
@@ -37,6 +40,7 @@ object SpUtils {
         }
         mmkv?.encode(key, sets)
     }
+
 
     fun decodeInt(key: String): Int? {
         return mmkv?.decodeInt(key, 0)
@@ -70,6 +74,16 @@ object SpUtils {
         return mmkv?.decodeParcelable(key, tClass)
     }
 
+    inline fun <reified T> decodeObject(key: String): T? {
+        var decodeString = mmkv?.decodeString(key, "")
+        return Gson().fromJson(decodeString,T::class.java)
+    }
+    inline fun <reified T> decodeList(key: String):List<T>? {
+        var decodeString = mmkv?.decodeString(key, "")
+        val listType = object : TypeToken<List<T>>() { }.type
+        var fromJson = Gson().fromJson<List<T>>(decodeString, listType)
+        return fromJson
+    }
     fun decodeStringSet(key: String): Set<String>? {
         return mmkv?.decodeStringSet(key, Collections.emptySet())
     }

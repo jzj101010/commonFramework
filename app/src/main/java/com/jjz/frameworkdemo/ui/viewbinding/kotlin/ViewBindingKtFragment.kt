@@ -2,7 +2,7 @@ package com.jjz.frameworkdemo.ui.viewbinding.kotlin
 
 import android.os.Bundle
 import android.view.View
-import com.jjz.frameworkdemo.ui.BaseFragment
+import com.jjz.frameworkdemo.BaseFragment
 import com.jjz.frameworkdemo.R
 import com.jjz.frameworkdemo.bindView
 import com.jjz.frameworkdemo.databinding.FragmentViewBindingKtBinding

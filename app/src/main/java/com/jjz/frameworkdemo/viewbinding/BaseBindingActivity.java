@@ -1,18 +1,12 @@
 package com.jjz.frameworkdemo.viewbinding;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
 
 import com.dylanc.viewbinding.base.ViewBindingUtil;
-import com.jjz.frameworkdemo.ui.BaseActivity;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
+import com.jjz.frameworkdemo.BaseActivity;
 
 /**
  * @author jjz

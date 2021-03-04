@@ -18,7 +18,7 @@ object HttpRepository : BaseRepository() {
             .addSize(size)
             .addParam("param", param).build()
 
-        return apiService.getData(getMethodUrl("article/top/json"),param)
+        return apiService.getData(getMethodUrl("article/listproject/0/json"),param)
     }
 
 }
