@@ -1,8 +1,11 @@
-package com.jjz.frameworkdemo.http.bean
+package com.jjz.frameworkdemo.data.bean
 
-import android.os.Parcelable
+import androidx.annotation.NonNull
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.io.Serializable
 
+@Entity(tableName = "test")
 data class TestBean(
     val apkLink: String,
     val audit: Int,
@@ -17,7 +20,6 @@ data class TestBean(
     val envelopePic: String,
     val fresh: Boolean,
     val host: String,
-    val id: Int,
     val link: String,
     val niceDate: String,
     val niceShareDate: String,
@@ -31,10 +33,13 @@ data class TestBean(
     val shareUser: String,
     val superChapterId: Int,
     val superChapterName: String,
-    val tags: List<Any>,
     val title: String,
     val type: Int,
     val userId: Int,
     val visible: Int,
     val zan: Int
-):Serializable
+):Serializable{
+    @NonNull
+    @PrimaryKey
+    var id: Int=0
+}

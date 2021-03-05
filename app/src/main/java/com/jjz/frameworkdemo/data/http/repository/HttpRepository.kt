@@ -1,4 +1,4 @@
-package com.jjz.frameworkdemo.http.repository
+package com.jjz.frameworkdemo.data.http.repository
 
 import com.jjz.common.http.BaseRepository
 import com.jjz.common.http.RetrofitParam

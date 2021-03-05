@@ -7,8 +7,10 @@ import com.jjz.frameworkdemo.BaseActivity
 import com.jjz.frameworkdemo.databinding.ActivityDemoKtBinding
 import com.jjz.frameworkdemo.inflate
 import com.jjz.frameworkdemo.viewmodel.HttpRequestViewModel
-import com.jjz.frameworkdemo.viewmodel.ViewBehavior
 
+/**
+ * 这里也可以继承BaseVMActivity，就不需要手动初始化（根据自己喜好来）
+ */
 class DemoKtActivity : BaseActivity() {
 
     private  val binding: ActivityDemoKtBinding by inflate()
@@ -31,7 +33,7 @@ class DemoKtActivity : BaseActivity() {
         }
         binding.tvCenter.text="点击请求"
         binding.tvCenter.setOnClickListener {
-            viewModel.getListData()
+            viewModel.getHttpListData()
         }
 
         binding.tvCode.text="class HttpRequestActivity : BaseActivity() {\n" +

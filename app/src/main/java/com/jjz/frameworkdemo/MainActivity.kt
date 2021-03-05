@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import com.jjz.frameworkdemo.databinding.ActivityMainBinding
+import com.jjz.frameworkdemo.ui.DBDemoActivity
 import com.jjz.frameworkdemo.ui.DemoJavaActivity
 import com.jjz.frameworkdemo.ui.DemoKtActivity
 import com.jjz.frameworkdemo.ui.viewbinding.java.ViewBindingJavaActivity
@@ -30,6 +31,8 @@ class MainActivity : BaseVMActivity<ActivityMainBinding, HttpRequestViewModel>()
                     "ViewModelKtActivity" -> startActivity(ViewModelKtActivity::class.java)
                     "DemoJavaActivity" -> startActivity(DemoJavaActivity::class.java)
                     "DemoKtActivity" -> startActivity(DemoKtActivity::class.java)
+                    "DBDemoActivity" -> startActivity(DBDemoActivity::class.java)
+
                 }
             }
 

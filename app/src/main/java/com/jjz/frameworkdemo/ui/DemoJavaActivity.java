@@ -18,7 +18,6 @@ public class DemoJavaActivity extends BaseVMActivity<ActivityDemoJavaBinding, Ht
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         /**
          * 业务逻辑  不需要手动初始化ViewModel 和 Viewbinding   kotlin页面可使用
          */
@@ -29,12 +28,7 @@ public class DemoJavaActivity extends BaseVMActivity<ActivityDemoJavaBinding, Ht
             }
         });
         binding.tvCenter.setText("点击请求");
-        binding.tvCenter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                viewModel.getListData() ;
-            }
-        });
+        binding.tvCenter.setOnClickListener(v -> viewModel.getHttpListData());
 
         binding.tvCode.setText("class HttpRequestActivity : BaseActivity() {\n" +
                 "\n" +

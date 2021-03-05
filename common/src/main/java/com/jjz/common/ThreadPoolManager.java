@@ -11,10 +11,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 
-/**
- * Created by wei on 2017/3/8.
- */
-
 public class ThreadPoolManager {
     private ExecutorService executor;
     private Handler handler = new Handler(Looper.getMainLooper());

@@ -2,7 +2,7 @@ package com.jjz.frameworkdemo.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.jjz.common.http.result.EmptyBean
-import com.jjz.frameworkdemo.http.repository.HttpRepository
+import com.jjz.frameworkdemo.data.http.repository.HttpRepository
 
 class ViewModelViewModel : BaseViewModel() {
 
