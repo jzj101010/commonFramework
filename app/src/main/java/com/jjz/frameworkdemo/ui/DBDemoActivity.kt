@@ -9,12 +9,10 @@ import com.jjz.frameworkdemo.BaseActivity
 import com.jjz.frameworkdemo.data.db.DBManager
 import com.jjz.frameworkdemo.databinding.ActivityDBDemoBinding
 import com.jjz.frameworkdemo.inflate
+import com.jjz.frameworkdemo.viewmodel.BaseVMActivity
 import com.jjz.frameworkdemo.viewmodel.HttpRequestViewModel
 
-class DBDemoActivity : BaseActivity() {
-
-    private  val binding: ActivityDBDemoBinding by inflate()
-    private  lateinit var  viewModel: HttpRequestViewModel
+class DBDemoActivity : BaseVMActivity<ActivityDBDemoBinding,HttpRequestViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,11 +28,16 @@ class DBDemoActivity : BaseActivity() {
         }
         binding.btShowDbData.setOnClickListener {
             var query = DBManager.getInstance().dataBase.testDao().query()
-            ToastUtils.showShort(query[0].id.toString())
             binding.tvContent.text=GsonUtils.toJson(query)
         }
-
-
+        binding.btClearDbData.setOnClickListener {
+            var testDao = DBManager.getInstance().dataBase.testDao()
+            var query = testDao.query()
+            query.forEach {
+                testDao.delete(it)
+            }
+            binding.btShowDbData.performClick()
+        }
 
     }
 }

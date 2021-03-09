@@ -25,10 +25,14 @@ public interface TestDao {
 //
 //    @Update(onConflict = OnConflictStrategy.REPLACE)
 //    void updateFriend(TestBean TestBean);
-//
-//
-//    @Delete
-//    void delete(TestBean TestBean);
+
+
+    @Delete
+    void delete(TestBean TestBean);
+
+    @Delete
+    void deletes(TestBean... users);
+
 //
 //
 //    @Query("SELECT * FROM test WHERE id LIKE :friendId")
