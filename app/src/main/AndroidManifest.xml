@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyFramework">
-        <activity android:name=".ui.DBDemoActivity"></activity>
+        <activity android:name=".ui.paging.RecyclerViewMoreActivity"></activity>
+        <activity android:name=".ui.DBDemoActivity" />
         <activity android:name=".ui.DemoJavaActivity" />
         <activity android:name=".ui.viewmodel.ViewModel2Activity" />
         <activity android:name=".ui.viewmodel.ViewModelActivity" />

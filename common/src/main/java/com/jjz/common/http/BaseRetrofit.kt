@@ -5,6 +5,7 @@ import android.content.pm.ApplicationInfo
 import android.os.Build
 import android.util.Log
 import com.blankj.utilcode.util.Utils
+import com.jjz.common.BuildConfig
 import com.jjz.common.Constant
 
 import okhttp3.*
@@ -18,7 +19,17 @@ object BaseRetrofit {
     val Tag = "BaseRetrofit"
 
     private fun getOkHttpClient(timeOut:Long): OkHttpClient {
-        return OkHttpClient.Builder()
+        var builder = OkHttpClient.Builder()
+        if(BuildConfig.DEBUG){
+            //Debug 模式下 信任所有证书
+            builder.hostnameVerifier { hostname, session ->
+                return@hostnameVerifier true
+            }
+            val sslParams = HttpsUtils.getSslSocketFactory(null, null, null)
+            builder.sslSocketFactory(sslParams.sSLSocketFactory,sslParams.trustManager)
+
+        }
+        return builder
             .callTimeout(timeOut, TimeUnit.SECONDS)
             .connectTimeout(timeOut, TimeUnit.SECONDS)
             .readTimeout(timeOut, TimeUnit.SECONDS)
