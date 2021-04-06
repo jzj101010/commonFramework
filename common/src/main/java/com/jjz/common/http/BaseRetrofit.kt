@@ -21,7 +21,7 @@ object BaseRetrofit {
     private fun getOkHttpClient(timeOut:Long): OkHttpClient {
         var builder = OkHttpClient.Builder()
         if(BuildConfig.DEBUG){
-            //Debug 模式下 信任所有证书
+            //Debug 模式下 信任所有证书,方便抓包
             builder.hostnameVerifier { hostname, session ->
                 return@hostnameVerifier true
             }
