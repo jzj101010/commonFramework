@@ -4,9 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import com.jjz.frameworkdemo.databinding.ActivityMainBinding
-import com.jjz.frameworkdemo.ui.DBDemoActivity
-import com.jjz.frameworkdemo.ui.DemoJavaActivity
-import com.jjz.frameworkdemo.ui.DemoKtActivity
+import com.jjz.frameworkdemo.ui.*
 import com.jjz.frameworkdemo.ui.paging.RecyclerViewMoreActivity
 import com.jjz.frameworkdemo.ui.viewbinding.java.ViewBindingJavaActivity
 import com.jjz.frameworkdemo.ui.viewbinding.kotlin.ViewBindingKtActivity
@@ -34,6 +32,9 @@ class MainActivity : BaseVMActivity<ActivityMainBinding, HttpRequestViewModel>()
                     "DemoKtActivity" -> startActivity(DemoKtActivity::class.java)
                     "DBDemoActivity" -> startActivity(DBDemoActivity::class.java)
                     "RecyclerViewMoreActivity" -> startActivity(RecyclerViewMoreActivity::class.java)
+                    "WebActivity"->startActivity(WebActivity::class.java)
+                    "PlayActivity"->startActivity(PlayActivity::class.java)
+
 
                 }
             }
