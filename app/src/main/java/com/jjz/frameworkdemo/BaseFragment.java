@@ -10,7 +10,7 @@ import com.jjz.frameworkdemo.viewmodel.ViewBehavior;
 import org.jetbrains.annotations.Nullable;
 
 public class BaseFragment extends Fragment implements ViewBehavior {
-
+    public String TAG = this.getClass().getSimpleName();
     private ProgressDialog dialog;
 
 

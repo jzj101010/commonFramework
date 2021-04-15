@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.DemoKtActivity">
 
-
-
     <androidx.core.widget.NestedScrollView
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -28,13 +26,5 @@
                 android:layout_height="match_parent"/>
         </LinearLayout>
 
-
-
     </androidx.core.widget.NestedScrollView>
-
-
-
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

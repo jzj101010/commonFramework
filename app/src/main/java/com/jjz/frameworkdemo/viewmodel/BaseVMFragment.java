@@ -7,9 +7,6 @@ import android.view.ViewGroup;
 
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewbinding.ViewBinding;
-
-import com.dylanc.viewbinding.base.ViewBindingUtil;
-import com.jjz.frameworkdemo.BaseFragment;
 import com.jjz.frameworkdemo.viewbinding.BaseBindingFragment;
 
 import java.lang.reflect.ParameterizedType;

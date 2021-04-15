@@ -18,7 +18,7 @@ import com.jjz.frameworkdemo.viewmodel.ViewBehavior;
  * @author jjz
  */
 abstract public  class BaseActivity extends AppCompatActivity implements ViewBehavior {
-
+    protected String TAG = this.getClass().getSimpleName();
     private ProgressDialog dialog;
 
 

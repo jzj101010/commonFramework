@@ -23,11 +23,10 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
 
-/**
- * @function support the sslsocket
- * Created by zhang on 2016/11/14.
- */
 
+/**
+ * 配置跳过https 的验证，请在debug下使用
+ */
 public class HttpsUtils {
     public static class SSLParams {
         public SSLSocketFactory sSLSocketFactory;
