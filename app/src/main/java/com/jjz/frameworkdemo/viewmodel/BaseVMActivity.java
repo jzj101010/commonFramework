@@ -13,6 +13,8 @@ import com.jjz.frameworkdemo.viewbinding.BaseBindingActivity;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
+import kotlinx.coroutines.CoroutineScope;
+
 /**
  * @author jjz
  */

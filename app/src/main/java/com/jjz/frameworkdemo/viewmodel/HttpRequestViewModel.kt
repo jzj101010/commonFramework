@@ -1,11 +1,14 @@
 package com.jjz.frameworkdemo.viewmodel
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.blankj.utilcode.util.GsonUtils
 import com.jjz.common.SpUtils
 import com.jjz.frameworkdemo.data.bean.TestBean
 import com.jjz.frameworkdemo.data.db.DBManager
 import com.jjz.frameworkdemo.data.http.repository.HttpRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class HttpRequestViewModel : BaseViewModel() {
 
@@ -20,7 +23,6 @@ class HttpRequestViewModel : BaseViewModel() {
                //结果 请求成功
                testLiveValue.value=GsonUtils.toJson(it)
            }
-
        }
     }
 
