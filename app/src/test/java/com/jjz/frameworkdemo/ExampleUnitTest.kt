@@ -16,18 +16,61 @@ class ExampleUnitTest {
     }
 
     @Test
-    fun test_Coroutine() {
+    fun test_Coroutine2() {
+        var threadMain=Thread.currentThread()
+        var threadDefault:Thread?=null
+        var threadIO:Thread?=null
         println(Thread.currentThread().name)
-        CoroutineScope(Dispatchers.IO).launch {
-            println(Thread.currentThread().name)
+        CoroutineScope(Dispatchers.Unconfined).launch {
+            println(Thread.currentThread().name+"--CoroutineScope(Dispatchers.Unconfined)")
+            println("Thread.currentThread()==threadMain:"+(Thread.currentThread()==threadMain))
+
         }
+        CoroutineScope(Dispatchers.Default).launch {
+            threadDefault= Thread.currentThread()
+            println(Thread.currentThread().name+"--CoroutineScope(Dispatchers.Default)")
+            println("Thread.currentThread()==threadMain:"+(Thread.currentThread()==threadMain))
+            println("Thread.currentThread()==threadDefault:"+(Thread.currentThread()==threadDefault))
+        }
+        CoroutineScope(Dispatchers.IO).launch {
+            threadDefault= Thread.currentThread()
+            println(Thread.currentThread().name+"--CoroutineScope(Dispatchers.IO)")
+        }
+
+
+        Thread.sleep(1000)
+    }
+
+    @Test
+    fun test_Coroutine() {
+        println(Thread.currentThread())
+
+
+        CoroutineScope(Dispatchers.Default).launch {
+            println(Thread.currentThread().name+"--CoroutineScope(Dispatchers.Default)")
+        }
+        CoroutineScope(Dispatchers.IO).launch {
+            println(Thread.currentThread().name+"--CoroutineScope(Dispatchers.IO)")
+        }
+//        CoroutineScope(Dispatchers.Main).launch {
+//            println(Thread.currentThread().name)
+//        }
+        CoroutineScope(Dispatchers.Unconfined).launch {
+            println(Thread.currentThread().name+"--CoroutineScope(Dispatchers.Unconfined)")
+        }
+        GlobalScope.async {
+            println(Thread.currentThread().name+"--GlobalScope.async")
+        }
+
         GlobalScope.launch {
-            println(Thread.currentThread().name)
+            println(Thread.currentThread().name+"--GlobalScope.launch")
             val result1 = GlobalScope.async {
+                println(Thread.currentThread().name+"--GlobalScope.launch-GlobalScope.async1")
                 delay(2000)
                 1
             }
             val result2 = GlobalScope.async {
+                println(Thread.currentThread().name+"--GlobalScope.launch-GlobalScope.async2")
                 getResult2()
             }
             val result = result1.await() + result2.await()
