@@ -34,8 +34,6 @@ class MainActivity : BaseVMActivity<ActivityMainBinding, HttpRequestViewModel>()
                     "RecyclerViewMoreActivity" -> startActivity(RecyclerViewMoreActivity::class.java)
                     "WebActivity"->startActivity(WebActivity::class.java)
                     "PlayActivity"->startActivity(PlayActivity::class.java)
-
-
                 }
             }
 
