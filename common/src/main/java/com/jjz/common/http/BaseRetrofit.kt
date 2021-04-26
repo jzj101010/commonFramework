@@ -18,7 +18,21 @@ object BaseRetrofit {
 
     val Tag = "BaseRetrofit"
 
+    /**
+     * OkHttpClient 文档
+     * 创建一个OkHttpClient实例并将其用于所有HTTP调用时，OkHttp的性能最好。
+     * 相反，为每个请求创建一个客户机会浪费空闲池上的资源。
+     */
+    var defaultOkHttpClient=getOkHttpClient(15)
+
     private fun getOkHttpClient(timeOut:Long): OkHttpClient {
+        /**
+         * 默认的单例存在，且符合情况下直接返回单例，避免再次创建 OkHttpClient
+         */
+        if(defaultOkHttpClient!=null&&timeOut.toInt()==defaultOkHttpClient.callTimeoutMillis()/1000){
+            return defaultOkHttpClient
+        }
+
         var builder = OkHttpClient.Builder()
         if(BuildConfig.DEBUG){
             //Debug 模式下 信任所有证书,方便抓包
@@ -68,6 +82,7 @@ object BaseRetrofit {
             }
 //            .addInterceptor(OkHttpInterceptor.getHttpLoggingInterceptor(true))
             .build()
+
     }
 
 
