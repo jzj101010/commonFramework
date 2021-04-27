@@ -21,6 +21,7 @@ import com.jjz.frameworkdemo.BaseFragment;
         // Inflate the layout for this fragment
         binding = ViewBindingUtil.inflateWithGeneric(this, getLayoutInflater());
         return binding.getRoot();
+
     }
 
 

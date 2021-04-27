@@ -25,5 +25,6 @@ class ViewBindingKtFragment : BaseFragment(R.layout.fragment_view_binding_kt) {
                 "        binding.tvCenter.text = \"\"\n" +
                 "    }\n" +
                 "}"
+
     }
 }

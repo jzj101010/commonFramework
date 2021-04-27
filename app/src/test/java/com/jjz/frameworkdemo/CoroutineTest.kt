@@ -1,7 +1,6 @@
 package com.jjz.frameworkdemo
 
-import com.jjz.common.http.BaseRetrofit
-import junit.framework.Assert.assertEquals
+import com.jjz.common.BuildConfig
 import kotlinx.coroutines.*
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -15,6 +14,102 @@ import java.util.concurrent.TimeUnit
  */
 class CoroutineTest {
 
+    @Test
+    fun testAsync2() {
+        println(BuildConfig.DEBUG)
+        var thread=Thread.currentThread()
+        var thread2=Thread.currentThread()
+        var thread3=Thread.currentThread()
+
+        CoroutineScope(Dispatchers.Unconfined).launch {
+            var time=System.currentTimeMillis()
+            var s1=GlobalScope.async {
+                var currentThread = Thread.currentThread()
+                thread2= Thread.currentThread()
+                println("CoroutineScope(Dispatchers.Unconfined--async).launch[当前线程为：${Thread.currentThread().name}]--thread== currentThread=${thread==currentThread}")
+                Thread.sleep(1000)
+                1
+            }
+            var s2=GlobalScope.async {
+                var currentThread = Thread.currentThread()
+                thread3= Thread.currentThread()
+                println("CoroutineScope(Dispatchers.Unconfined--async).launch[当前线程为：${Thread.currentThread().name}]--thread== currentThread=${thread==currentThread}")
+                Thread.sleep(3000)
+                2
+            }
+            println(s1.await()+s2.await())
+            println(System.currentTimeMillis()-time)
+
+        }
+        Thread.sleep(22000)
+
+
+    }
+
+    @Test
+    fun testAsync() {
+
+        var thread=Thread.currentThread()
+        var thread2=Thread.currentThread()
+        var thread3=Thread.currentThread()
+
+        CoroutineScope(Dispatchers.IO).launch {
+            var time=System.currentTimeMillis()
+              var s1=async {
+                var currentThread = Thread.currentThread()
+                thread2= Thread.currentThread()
+                println("CoroutineScope(Dispatchers.Unconfined--async).launch[当前线程为：${Thread.currentThread().name}]--thread== currentThread=${thread==currentThread}")
+                Thread.sleep(2000)
+                1
+            }
+            var s2=async {
+                var currentThread = Thread.currentThread()
+                thread3= Thread.currentThread()
+                println("CoroutineScope(Dispatchers.Unconfined--async).launch[当前线程为：${Thread.currentThread().name}]--thread== currentThread=${thread==currentThread}")
+                Thread.sleep(8000)
+                2
+            }
+            s1.await()
+            s2.await()
+           println(System.currentTimeMillis()-time)
+        }
+
+        Thread.sleep(22000)
+    }
+
+    @Test
+    fun testGlobalScope() {
+
+            var thread=Thread.currentThread()
+        var thread2=Thread.currentThread()
+        var thread3=Thread.currentThread()
+        println("testGlobalScope[当前线程为：${Thread.currentThread().name}]")
+
+        GlobalScope.launch {
+            println(" GlobalScope.launch [当前线程为：${Thread.currentThread().name}]")
+        }
+        CoroutineScope(Dispatchers.Default).launch {
+            println("CoroutineScope(Dispatchers.Default).launch[当前线程为：${Thread.currentThread().name}]")
+        }
+
+        GlobalScope.async {
+            println(" GlobalScope.async [当前线程为：${Thread.currentThread().name}]")
+        }
+        CoroutineScope(Dispatchers.Unconfined).launch {
+            async {
+                println("CoroutineScope(Dispatchers.Unconfined--async).launch[当前线程为：${Thread.currentThread().name}]")
+                var currentThread = Thread.currentThread()
+                thread2= Thread.currentThread()
+                println(thread== currentThread)
+            }
+            async {
+                var currentThread = Thread.currentThread()
+                thread3= Thread.currentThread()
+                println("CoroutineScope(Dispatchers.Unconfined--async).launch[当前线程为：${Thread.currentThread().name}]")
+            }
+        }
+        Thread.sleep(2000)
+    }
 
     @Test
     fun runLunch() {

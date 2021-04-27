@@ -1,6 +1,7 @@
 package com.jjz.frameworkdemo.ui.viewbinding.kotlin
 
 import android.os.Bundle
+import androidx.fragment.app.commit
 import com.jjz.frameworkdemo.BaseActivity
 import com.jjz.frameworkdemo.databinding.ActivityViewBindingKtBinding
 import com.jjz.frameworkdemo.inflate
@@ -27,5 +28,6 @@ class ViewBindingKtActivity : BaseActivity() {
                 "    }\n" +
                 "}\n\n" +
                 "###################################################################################\n"
+
     }
 }

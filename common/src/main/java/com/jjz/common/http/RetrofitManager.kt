@@ -1,20 +1,17 @@
 package com.jjz.common.http
 
-import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.os.Build
-import android.util.Log
 import com.blankj.utilcode.util.Utils
 import com.jjz.common.BuildConfig
 import com.jjz.common.Constant
-
 import okhttp3.*
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-object BaseRetrofit {
+object RetrofitManager {
 
     val Tag = "BaseRetrofit"
 
@@ -23,16 +20,9 @@ object BaseRetrofit {
      * 创建一个OkHttpClient实例并将其用于所有HTTP调用时，OkHttp的性能最好。
      * 相反，为每个请求创建一个客户机会浪费空闲池上的资源。
      */
-    var defaultOkHttpClient=getOkHttpClient(15)
+    var defaultRetrofit: Retrofit = getRetrofit()
 
-    private fun getOkHttpClient(timeOut:Long): OkHttpClient {
-        /**
-         * 默认的单例存在，且符合情况下直接返回单例，避免再次创建 OkHttpClient
-         */
-        if(defaultOkHttpClient!=null&&timeOut.toInt()==defaultOkHttpClient.callTimeoutMillis()/1000){
-            return defaultOkHttpClient
-        }
-
+    private fun getOkHttpClient(timeOut: Long): OkHttpClient {
         var builder = OkHttpClient.Builder()
         if(BuildConfig.DEBUG){
             //Debug 模式下 信任所有证书,方便抓包
@@ -40,7 +30,7 @@ object BaseRetrofit {
                 return@hostnameVerifier true
             }
             val sslParams = HttpsUtils.getSslSocketFactory(null, null, null)
-            builder.sslSocketFactory(sslParams.sSLSocketFactory,sslParams.trustManager)
+            builder.sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager)
 
         }
         return builder
@@ -64,8 +54,8 @@ object BaseRetrofit {
                 } else {
                     // 如果没登录情况获取 token 之类
                     val credential = Credentials.basic(
-                        ApiConfig.CLIENT_USERNAME,
-                        ApiConfig.CLIENT_PASSWORD
+                            ApiConfig.CLIENT_USERNAME,
+                            ApiConfig.CLIENT_PASSWORD
                     )
                     headBuilder.add("Authorization", credential)
                 }
@@ -88,8 +78,9 @@ object BaseRetrofit {
 
 
      fun getBaseUrl(): String {
-        val isDebug =
-            Utils.getApp().applicationInfo != null && Utils.getApp().applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE !== 0
+
+        val isDebug =BuildConfig.DEBUG
+//            Utils.getApp().applicationInfo != null && Utils.getApp().applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE !== 0
         return if (isDebug) {
             Constant.APP_HOST_DEBUG
         } else {
@@ -98,28 +89,28 @@ object BaseRetrofit {
     }
 
     fun getRetrofitUpFile(): Retrofit {
-        val isDebug =
-            Utils.getApp().applicationInfo != null && Utils.getApp().applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE !== 0
+        val isDebug =BuildConfig.DEBUG
+//            Utils.getApp().applicationInfo != null && Utils.getApp().applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE !== 0
         val baseUrl = if (isDebug) {
             Constant.APP_HOST_DEBUG
         } else {
               Constant.APP_HOST_RELEASE
         }
-        return getRetrofit(baseUrl,60)
+        return getRetrofit(baseUrl, 60)
     }
 
     /**
      * 默认服务器，常用
      */
-    fun getRetrofit(): Retrofit {
+   private fun getRetrofit(): Retrofit {
         val baseUrl = getBaseUrl()
-        return getRetrofit(baseUrl,15)
+        return getRetrofit(baseUrl, 15)
     }
 
     /**
      * 自定义 服务器
      */
-    fun getRetrofit(baseUrl: String,timeOut:Long): Retrofit {
+    fun getRetrofit(baseUrl: String, timeOut: Long): Retrofit {
         return getRetrofit(baseUrl, getOkHttpClient(timeOut))
     }
 

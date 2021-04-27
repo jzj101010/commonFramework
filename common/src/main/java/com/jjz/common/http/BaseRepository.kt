@@ -1,11 +1,9 @@
 package com.jjz.common.http
 
-import retrofit2.Retrofit
-
 
 abstract class BaseRepository {
 
-    public var apiService = BaseRetrofit.getRetrofit().create(ApiService::class.java)
+     var apiService = RetrofitManager.defaultRetrofit.create(ApiService::class.java)
 
     /**
      * 地址
