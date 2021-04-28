@@ -22,6 +22,7 @@ object RetrofitManager {
      */
     var defaultRetrofit: Retrofit = getRetrofit()
 
+
     private fun getOkHttpClient(timeOut: Long): OkHttpClient {
         var builder = OkHttpClient.Builder()
         if(BuildConfig.DEBUG){
@@ -84,7 +85,7 @@ object RetrofitManager {
         return if (isDebug) {
             Constant.APP_HOST_DEBUG
         } else {
-              Constant.APP_HOST_RELEASE
+            Constant.APP_HOST_RELEASE
         }
     }
 
